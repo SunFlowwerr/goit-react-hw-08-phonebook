@@ -1,7 +1,7 @@
 import { RegistartionForm } from './RegistrationForm';
-import { Form } from './Form';
-import { Filter } from './Filter';
-import { ContactList } from './ContactList';
+// import { Form } from './Form';
+// import { Filter } from './Filter';
+// import { ContactList } from './ContactList';
 
 export function App() {
   return (
