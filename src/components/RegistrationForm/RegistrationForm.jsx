@@ -4,14 +4,14 @@ import { register } from '../../redux/auth/auth-operations';
 
 export const RegistartionForm = () => {
   const distpach = useDispatch();
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'username':
-        return setUsername(value);
+        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -23,10 +23,10 @@ export const RegistartionForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    distpach(register({ username, email, password }));
+    distpach(register({ name, email, password }));
     setEmail('');
     setPassword('');
-    setUsername('');
+    setName('');
   }
 
   return (
@@ -78,7 +78,7 @@ export const RegistartionForm = () => {
             name="username"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
-            value={username}
+            value={name}
             onChange={handleChange}
             style={{
               width: '250px',
