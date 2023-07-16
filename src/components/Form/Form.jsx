@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useLocalStorage from 'hooks/useLocalStorage';
+import { Input, Stack, Button } from '@chakra-ui/react';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -54,34 +55,23 @@ export function Form() {
     <form
       onSubmit={handleSubmit}
       style={{
+        width: '100%',
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'column',
-        margin: '40px',
-        gap: '15px',
-        width: '250px',
+        gap: 20,
       }}
     >
-      <h2
-        style={{
-          margin: '0px',
-        }}
-      >
-        Phonebook
-      </h2>
-      <label
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          fontSize: '20px',
-        }}
-      >
-        Name :
-        <input
-          style={{
-            width: '250px',
-            height: '20px',
-          }}
+      <h2 style={{ fontSize: 27, color: '#38B2AC' }}>Add new contact</h2>
+      <Stack spacing={4} style={{ width: 500 }}>
+        <Input
+          borderColor="#38B2AC"
+          focusBorderColor="#2C7A7B"
+          _placeholder={{ opacity: 1, color: '#2C7A7B' }}
+          placeholder="Name"
+          size="md"
+          variant="outline"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -90,21 +80,13 @@ export function Form() {
           value={name}
           onChange={handleChange}
         />
-      </label>
-      <label
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          fontSize: '20px',
-        }}
-      >
-        Number :
-        <input
-          style={{
-            width: '250px',
-            height: '20px',
-          }}
+        <Input
+          borderColor="#38B2AC"
+          focusBorderColor="#2C7A7B"
+          _placeholder={{ opacity: 1, color: '#2C7A7B' }}
+          placeholder="Number"
+          size="md"
+          variant="outline"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -113,23 +95,10 @@ export function Form() {
           value={number}
           onChange={handleChange}
         />
-      </label>
-      <button
-        type="submit"
-        style={{
-          width: '120px',
-          height: '40px',
-          margin: 'auto',
-          marginTop: '10px',
-          backgroundColor: '#00BFFF',
-          border: '1px solid #00BFFF',
-          borderRadius: '4px',
-          color: '#fff',
-          fontSize: '16px',
-        }}
-      >
-        Add contact
-      </button>
+      </Stack>
+      <Button colorScheme="teal" variant="solid" type="submit">
+        Add to contacts
+      </Button>
     </form>
   );
 }
