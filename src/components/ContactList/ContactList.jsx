@@ -4,7 +4,6 @@ import { fetchContacts } from 'redux/operations';
 import { Form } from '../Form';
 import { Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
 
 export const ContactList = () => {
   const { contacts, filter, deleteContact } = useLocalStorage();
@@ -16,17 +15,13 @@ export const ContactList = () => {
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 
-  // function handleDeleteContact(id) {
-  //   deleteContact(id);
-  // }
-
-  // async function handleDeleteContact(id, name) {
-  //   try {
-  //     await deleteContact(id);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  async function handleDeleteContact(id) {
+    try {
+      await deleteContact(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -91,8 +86,7 @@ export const ContactList = () => {
               colorScheme="teal"
               variant="solid"
               type="button"
-              // onClick={() => handleDeleteContact(id)}
-              onClick={() => dispatch(deleteContact(id))}
+              onClick={() => handleDeleteContact(id)}
             >
               Delete
             </Button>

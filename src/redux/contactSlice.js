@@ -40,15 +40,15 @@ const contactsSlice = createSlice({
       state.error = payload;
     },
     [deleteContact.pending]: state => {
-      state.status = 'deleteLoading';
+      state.status = 'updating';
       state.error = null;
     },
     [deleteContact.fulfilled]: (state, { payload }) => {
-      state.status = 'deleteResolved';
-      state.entities = state.entities.filter(item => item.id !== payload.id);
+      state.status = 'resolved';
+      state.entities = state.entities.filter(item => item.id !== payload);
     },
     [deleteContact.rejected]: (state, { payload }) => {
-      state.status = 'deleteRejected';
+      state.status = 'rejected';
       state.error = payload;
     },
   },
