@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 export const LoginForm = () => {
-  const distpach = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +32,7 @@ export const LoginForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    distpach(logIn({ email, password }));
+    dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
   }
@@ -101,81 +101,5 @@ export const LoginForm = () => {
         </Button>
       </Stack>
     </form>
-    // <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-    //   <form
-    //     onSubmit={handleSubmit}
-    //     style={{
-    //       display: 'flex',
-    //       flexDirection: 'column',
-    //       margin: '40px',
-    //       gap: '15px',
-    //       width: '250px',
-    //     }}
-    //   >
-    //     <h2>Login</h2>
-    //     <label
-    //       style={{
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         gap: '10px',
-    //         fontSize: '20px',
-    //       }}
-    //     >
-    //       Email:
-    //       <input
-    //         type="text"
-    //         name="email"
-    //         pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-    //         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //         required
-    //         value={email}
-    //         onChange={handleChange}
-    //         style={{
-    //           width: '250px',
-    //           height: '20px',
-    //         }}
-    //       ></input>
-    //     </label>
-    //     <label
-    //       style={{
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         gap: '10px',
-    //         fontSize: '20px',
-    //       }}
-    //     >
-    //       Password:
-    //       <input
-    //         type="text"
-    //         name="email"
-    //         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //         required
-    //         value={password}
-    //         onChange={handleChange}
-    //         style={{
-    //           width: '250px',
-    //           height: '20px',
-    //         }}
-    //       ></input>
-    //     </label>
-    //     <button
-    //       type="submit"
-    //       style={{
-    //         width: '120px',
-    //         height: '40px',
-    //         margin: 'auto',
-    //         marginTop: '10px',
-    //         backgroundColor: '#00BFFF',
-    //         border: '1px solid #00BFFF',
-    //         borderRadius: '4px',
-    //         color: '#fff',
-    //         fontSize: '16px',
-    //       }}
-    //     >
-    //       Login
-    //     </button>
-    //   </form>
-    // </div>
   );
 };

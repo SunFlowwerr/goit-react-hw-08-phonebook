@@ -22,9 +22,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
 
-    [logIn.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
-      state.token = payload.token;
+    [logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
     },
 

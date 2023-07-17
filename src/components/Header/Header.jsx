@@ -6,6 +6,7 @@ import { UserMenu } from '../UserMenu';
 
 export const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
+  console.log(isLoggedIn);
 
   return (
     <div
