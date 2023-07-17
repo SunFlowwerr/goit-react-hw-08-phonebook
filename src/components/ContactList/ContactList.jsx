@@ -3,18 +3,30 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { Form } from '../Form';
 import { Button } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/operations';
 
 export const ContactList = () => {
-  const { dispatch, contacts, filter, deleteContact } = useLocalStorage();
+  const { contacts, filter, deleteContact } = useLocalStorage();
+  const dispatch = useDispatch();
 
   const normalizedFilter = filter ? filter.toLowerCase() : '';
 
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
-  function handleDeleteContact(id) {
-    deleteContact(id);
-  }
+
+  // function handleDeleteContact(id) {
+  //   deleteContact(id);
+  // }
+
+  // async function handleDeleteContact(id, name) {
+  //   try {
+  //     await deleteContact(id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -46,6 +58,7 @@ export const ContactList = () => {
         {visibleContacts.map(({ id, name, number }) => (
           <li
             key={id}
+            id={id}
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -78,7 +91,8 @@ export const ContactList = () => {
               colorScheme="teal"
               variant="solid"
               type="button"
-              onClick={() => handleDeleteContact(id)}
+              // onClick={() => handleDeleteContact(id)}
+              onClick={() => dispatch(deleteContact(id))}
             >
               Delete
             </Button>
